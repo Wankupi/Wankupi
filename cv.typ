@@ -3,7 +3,7 @@
 
 #let ICPC = link("https://icpc.global/", "International Collegiate Programming Contest")
 #let CCPC = link("https://ccpc.io/", "China Collegiate Programming Contest")
-#let sjtu = link("https://en.sjtu.edu.cn/", "Shanghai Jiaotong University")
+#let sjtu = link("https://en.sjtu.edu.cn/", "Shanghai Jiao Tong University")
 #let zhiyuan = link("https://en.zhiyuan.sjtu.edu.cn/", "Zhiyuan College")
 #let acm = link("https://acm.sjtu.edu.cn/", "ACM Class")
 
@@ -72,7 +72,7 @@
 
 #section[Research]
 
-I'm enthusiastic about security, network and system for machine learning. I have strong self-learning and hands-on
+I'm enthusiastic about security, networks, and systems for machine learning. I have strong self-learning and hands-on
 practical skills.
 
 #item(
@@ -116,13 +116,13 @@ practical skills.
 #TA("Programming (C++)", weng, date: "Fall 2023")[
   - Created some homework
   - Set 1 of 3 final exam problems
-  - Gave lectures on using Git, CMake, Linux and some Algorithms
+  - Gave lectures on using Git, CMake, Linux, and some Algorithms
 ]
 #TA("Data Structure", weng, date: "Spring 2024")[
   - Gave lectures on some extra data structures
   - Guided students to finish the labs
 ]
-#TA("Data Structure", liang, date: "Summer 2024", extra: "for non computer majors")[
+#TA("Data Structure", liang, date: "Summer 2024")[
   - Delivered some detailed aids and lessons
 ]
 #TA("Programming Practice", yu, date: "Summer 2024")[
@@ -143,9 +143,9 @@ practical skills.
   date: "2023 ~ Present",
   extra: link("https://acm.sjtu.edu.cn/OnlineJudge"),
 )[
-  - A online judge system for some courses in SJTU, including Data Structure, Programming, etc.
+  - An online judge system for some courses in SJTU, including Data Structure, Programming, etc.
   - Technology Stack: Flask, PostgreSQL, Redis, Nix, MinIO, Sandbox(nsjail), Nginx.
-  - My Contributions: bug fix, new api system, some optimization and some other features.
+  - My Contributions: bug fix, new API system, some optimization, and other features.
 ]
 
 #item(
@@ -156,8 +156,8 @@ practical skills.
 )[
   - This project aims to improve the evaluation method of compiler courses.
   - A toolchain to inject, compile and run the code on the real board, and then give an accurate cycle report.
-  - Provide 3 usage modes to support different hardware platforms: (1) using mini-kernel, (2) using linux kernel + custom
-    init program and (3) using in normal linux.
+  - Provide 3 usage modes to support different hardware platforms: (1) using mini-kernel, (2) using Linux kernel + custom
+    init program and (3) using in normal Linux.
 ]
 
 #item(
@@ -166,10 +166,10 @@ practical skills.
   date: "Spring 2024",
   extra: gitee("Wankupi/typeinfer"),
 )[
-  - This project aims to verify a C program "type inference" by COQ.
-  - My work is to prove the correctness of the type inference algorithm, while my partner's is to prove the C program do
+  - This project aims to verify a C program "type inference" by Coq.
+  - My work is to prove the correctness of the type inference algorithm, while my partner's is to prove the C program does
     implement the algorithm.
-  - Above 2k lines of COQ code.
+  - Above 2k lines of Coq code.
 ]
 
 #item(
@@ -178,9 +178,9 @@ practical skills.
   date: "Spring 2024",
   extra: github("Wankupi/kernel"),
 )[
-  - Includes a sbi implementation to boot the kernel.
+  - Includes an SBI implementation to boot the kernel.
   - Could run on VisionFive2 board.
-  - Features: KASLR, Virutal Memory, Buddy Allocator, Unix-like Syscall, etc.
+  - Features: KASLR, Virtual Memory, Buddy Allocator, Unix-like Syscall, etc.
 ]
 
 #item(
@@ -189,7 +189,7 @@ practical skills.
   extra: github("DarkSharpness/TrafficPrediction"),
   date: "Spring 2024",
 )[
-  - Using PatchTST to predict the traffic flow based on the previous 24 hours traffic flow.
+  - Using PatchTST to predict the traffic flow based on the previous 24-hour traffic flow.
   - Features: Consider geographic information.
   - Rank 1st in the class.
 ]
@@ -221,7 +221,7 @@ practical skills.
   date: "June.2023",
   extra: github("Wankupi/ppca-network"),
 )[
-  - Features: Transparent (tun), Socks5 protocol (tcp+udp), Forward and Reverse, Multi level, etc.
+  - Features: Transparent (tun), Socks5 protocol (tcp+udp), Forward and Reverse, Multi-level, etc.
 ]
 
 #item(
@@ -230,7 +230,7 @@ practical skills.
   extra: github("Wankupi/TicketSystem"),
   date: "Spring 2023",
 )[
-  - A system to manage users, trains and tickets.
+  - A system to manage users, trains, and tickets.
   - Features: Using B+tree as Database, Web Frontend (Vue and Websocket), Simultaneous Operation by Multiple Users,
     Implemented WebSocket in C++ backend.
 
@@ -246,7 +246,7 @@ practical skills.
 
 #o[Language]: Mandarin (Native), English
 
-#o[Programming]: C++, Python, Rust, Go, Verilog, COQ, TypeScript, SQL, Shell.
+#o[Programming]: C++, Python, Rust, Go, Verilog, Coq, TypeScript, SQL, Shell.
 
 #o[Technical experience]:
 - Web Development: Flask, Vue, Nginx, MinIO.
@@ -254,4 +254,4 @@ practical skills.
 - Database: MySQL, PostgreSQL, Redis.
 - Other: Latex, Typst, Wayland, Vivado.
 
-#o[Interests]: Badminton, Ping-pong, Volleyball.
+#o[Interests]: Badminton, Ping-Pong, Volleyball.
