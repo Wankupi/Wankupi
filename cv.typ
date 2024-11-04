@@ -67,7 +67,7 @@
   - Member of #underline(acm), #underline(zhiyuan)
   - GPA: 3.877/4.3
   - Selected courses: Programming Practice: 100, Compiler Design: 96, Operating System: 95, Algorithms: 98, Comprehensive
-    Design for Computer System: 95.
+    Design for Computer System: 95, Program Verification: 99.
 ]
 
 #section[Research]
