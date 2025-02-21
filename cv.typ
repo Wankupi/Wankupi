@@ -1,8 +1,12 @@
 #import "@preview/modernpro-cv:1.0.1": *
 #import "@preview/fontawesome:0.5.0": *
 
-#let ICPC = link("https://icpc.global/", "International Collegiate Programming Contest")
-#let CCPC = link("https://ccpc.io/", "China Collegiate Programming Contest")
+#let link_bak = link
+#let link = (url, text) => text
+#let ICPC = link("https://icpc.global/", "International Collegiate Programming Contest (ICPC)")
+#let CCPC = link("https://ccpc.io/", "China Collegiate Programming Contest (CCPC)")
+
+#let link = link_bak
 #let sjtu = link("https://en.sjtu.edu.cn/", "Shanghai Jiao Tong University")
 #let zhiyuan = link("https://en.zhiyuan.sjtu.edu.cn/", "Zhiyuan College")
 #let acm = link("https://acm.sjtu.edu.cn/", "ACM Class")
@@ -12,7 +16,10 @@
 #let yu = "Yong Yu"
 #let chen = "Guoxing Chen"
 
-#let theme_color = rgb("#006885")
+#let theme_color = rgb("#005dc8")
+#let hl_color = theme_color
+
+#show strong: set text(fill: hl_color)
 
 #show: cv-single.with(
   font-type: "Times New Roman",
@@ -21,7 +28,7 @@
   address: [#acm, #sjtu],
   lastupdated: "true",
   pagecount: "true",
-  date: "2024-10-12",
+  date: datetime.today().display(),
   contacts: (
     (text: "kunpengwang@sjtu.edu.cn", link: "mailto:kunpengwang@sjtu.edu.cn"),
     (text: [#fa-icon("github")Wankupi], link: "https://www.github.com/Wankupi"),
@@ -48,7 +55,7 @@
     description
   }
   if (show_detail and detail != []) {
-    block(inset: (left: 1em, right: 0em, top: -0.4em, bottom: -0.0em), text(size: 1em, detail))
+    block(inset: (left: 1em, right: 0em, top: -0.5em, bottom: -0.0em), text(size: 1em, detail))
   }
 }
 
@@ -62,17 +69,17 @@
 #item(
   sjtu,
   date: "Sep.2022 ~ Present",
-  description: emph[BEng of Computer Science],
+  description: emph[B.Eng. of Computer Science and Technology],
 )[
   - Member of #underline(acm), #underline(zhiyuan)
-  - GPA: 3.877/4.3
-  - Selected courses: Programming Practice: 100, Compiler Design: 96, Operating System: 95, Algorithms: 98, Comprehensive
-    Design for Computer System: 95, Program Verification: 99.
+  - Academic credit score: 90.4/100.
+  - Selected courses: Program Verification: 99, Programming Practice: 100, Compiler Design: 96, Operating System: 95,
+    Algorithms: 98, Comprehensive Design for Computer System: 95.
 ]
 
 #section[Research]
 
-I'm enthusiastic about security, networks, and systems for machine learning. I have strong self-learning and hands-on
+I'm enthusiastic about formal verification, architecture, and system security. I have strong self-learning and hands-on
 practical skills.
 
 #item(
@@ -82,7 +89,7 @@ practical skills.
   show_detail: true,
 )[
   Undergraduate Researcher, advised by #link("https://donnod.github.io/", underline(emph[Prof. #chen]))\
-  Research Topic: Hardware/Software Co-design for Secure with Trust Execution Environment such as Intel SGX.
+  Research Topic: verifiable interrupt-based side-channel mitigation for trusted execution environment.
 ]
 
 #sectionsep
@@ -95,70 +102,52 @@ practical skills.
   item(award, short: institution, date: date, extra: extra, description: description)[]
 }
 
-#award(award: "Silver Medal", date: "Nov.2022", institution: [#CCPC, Weihai])
-#award(award: "Golden Medal", date: "Dec.2022", institution: [#ICPC, Hangzhou])
-#award(award: "Golden Medal", date: "Dec.2022", institution: [#ICPC, Nanjing])
-#award(award: "Bronze Medal", date: "Jan.2023", institution: [#ICPC, Hangkang])
-#award(award: "Merit Student", date: "2023", institution: sjtu, extra: "one per class only")
-#award(award: "Zhiyuan Honorary Scholarship", date: "2022,2023,2024", institution: zhiyuan, extra: "top 2% in SJTU")
-#award(award: "First Prize Scholarship", date: "2023", institution: zhiyuan, extra: "top 3 in class")
-
-#sectionsep
-
-// ----- separate -----
-
-#section[Teaching Assistant Experience]
-
-#let TA(class, teacher, date: "", extra: "", body) = {
-  item(class, body, short: [#teacher], date: date, extra: extra)
+#let award(award: [], inst: [], inst2: [], extra: "", date: "") = {
+  let extra_text = {
+    ", "
+    text(style: "italic", extra)
+  }
+  oneline-two(entry1: text(weight: "bold", fill: theme_color, award), entry2: date)
+  h(1em)
+  inst
+  if (inst2 == [] and extra != "") {
+    extra_text
+  }
+  linebreak()
+  if (inst2 != []) {
+    h(1em)
+    inst2
+    if (extra != "") {
+      extra_text
+    }
+    linebreak()
+  }
 }
 
-#TA("Programming (C++)", weng, date: "Fall 2023")[
-  - Created some homework
-  - Set 1 of 3 final exam problems
-  - Gave lectures on using Git, CMake, Linux, and some Algorithms
-]
-#TA("Data Structure", weng, date: "Spring 2024")[
-  - Gave lectures on some extra data structures
-  - Guided students to finish the labs
-]
-#TA("Data Structure", liang, date: "Summer 2024")[
-  - Delivered some detailed aids and lessons
-]
-#TA("Programming Practice", yu, date: "Summer 2024")[
-  - Created some CTF problems with the knowledge they learned (about Programming, Architecture, Cryptography)
-  - Improve and optimize the major project: Simulator of RISCV32 CPU
-  - Guided the lab of Network Proxy
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 2em,
+)[
+  #award(
+    award: [$2 times$ Golden Medal, $1times$ Bronze Modal],
+    date: "2022",
+    inst: ICPC,
+    inst2: [Hangzhou, Nanjing and Hangkang],
+  )
+  #award(award: "Silver Medal", date: "Nov.2022", inst: CCPC, inst2: "Weihai")
+][
+  #award(award: "Merit Student", date: "2023", inst: sjtu, extra: [*one* per class only])
+  #award(award: "Zhiyuan Honorary Scholarship", date: "2022,2023,2024", inst: zhiyuan, extra: [top *2%* in SJTU])
+  #award(award: "First Prize Scholarship", date: "2023", inst: zhiyuan, extra: [top *3* in class])
 ]
 
 #sectionsep
 
 // ----- separate -----
 
-#section[Projects Experience]
+#let item = item.with(show_detail: true)
 
-#item(
-  [ACM Class Online Judge],
-  short: "Maintainer and Contributors",
-  date: "2023 ~ Present",
-  extra: link("https://acm.sjtu.edu.cn/OnlineJudge"),
-)[
-  - An online judge system for some courses in SJTU, including Data Structure, Programming, etc.
-  - Technology Stack: Flask, PostgreSQL, Redis, Nix, MinIO, Sandbox(nsjail), Nginx.
-  - My Contributions: bug fix, new API system, some optimization, and other features.
-]
-
-#item(
-  [Real-board Judger for Compiler],
-  short: [Collaboration],
-  date: "Oct.2024",
-  extra: github("DarkSharpness/Compiler-Backend"),
-)[
-  - This project aims to improve the evaluation method of compiler courses.
-  - A toolchain to inject, compile and run the code on the real board, and then give an accurate cycle report.
-  - Provide 3 usage modes to support different hardware platforms: (1) using mini-kernel, (2) using Linux kernel + custom
-    init program and (3) using in normal Linux.
-]
+#section[Selected Projects]
 
 #item(
   [Verified TypeInfer],
@@ -169,9 +158,28 @@ practical skills.
   - This project aims to verify a C program "type inference" by Coq.
   - My work is to prove the correctness of the type inference algorithm, while my partner's is to prove the C program does
     implement the algorithm.
-  - Above 2k lines of Coq code.
+  - Above *2k* lines of *Coq* code.
 ]
-
+#item( //
+  [Mx-Compiler],
+  short: [Course Project of Compiler],
+  date: "Summer 2023",
+  extra: github("Wankupi/MxCompiler"),
+)[
+  - A compiler from Mx language (a variant of C++ language designed for course) to RISCV32IM assembly
+  - Features: Register Allocation(Graphing Coloring), Mem2Reg, Constant Propagation, etc.
+  - About *15.8k* lines *C++* code.
+]
+#item(
+  [RISCV32I CPU in Verilog RTL],
+  short: [Course Project of Architecture],
+  date: "Fall 2023",
+  extra: github("Wankupi/RiSCV32-Processor"),
+)[
+  - Features: Tomasulo, Branch Prediction, Instruction Cache, etc.
+  - Could run on a Xilinx FPGA board.
+  - About *3.3k* lines of *Verilog* code.
+]
 #item(
   [RISCV64 Macrokernel in Rust],
   short: [Course Project of Operating System],
@@ -181,77 +189,38 @@ practical skills.
   - Includes an SBI implementation to boot the kernel.
   - Could run on VisionFive2 board.
   - Features: KASLR, Virtual Memory, Buddy Allocator, Unix-like Syscall, etc.
-]
-
-#item(
-  [Traffic Prediction],
-  short: [Group Course Project of Machine Learning],
-  extra: github("DarkSharpness/TrafficPrediction"),
-  date: "Spring 2024",
-)[
-  - Using PatchTST to predict the traffic flow based on the previous 24-hour traffic flow.
-  - Features: Consider geographic information.
-  - Rank 1st in the class.
-]
-
-#item(
-  [RISCV32I CPU in Verilog RTL],
-  short: [Course Project of Architecture],
-  date: "Fall 2023",
-  extra: github("Wankupi/RiSCV32-Processor/"),
-)[
-  - Features: Tomasulo, Branch Prediction, Instruction Cache, etc.
-  - Could run on a Xilinx FPGA board.
-]
-
-#item( //
-  [Mx-Compiler],
-  short: [Course Project of Compiler],
-  date: "Summer 2023",
-  extra: github("Wankupi/MxCompiler"),
-)[
-  - A compiler from Mx language (a variant of C++ language designed for course) to RISCV32IM assembly
-  - Implemented in C++ with antlr4.
-  - Features: Register Allocation(Graphing Coloring), Mem2Reg, Constant Propagation, etc.
-]
-
-#item(
-  [Network Proxy in Go],
-  short: [Course Project of Programming Practice],
-  date: "June.2023",
-  extra: github("Wankupi/ppca-network"),
-)[
-  - Features: Transparent (tun), Socks5 protocol (tcp+udp), Forward and Reverse, Multi-level, etc.
-]
-
-#item(
-  [Ticket System],
-  short: [Course Project of Programming],
-  extra: github("Wankupi/TicketSystem"),
-  date: "Spring 2023",
-)[
-  - A system to manage users, trains, and tickets.
-  - Features: Using B+tree as Database, Web Frontend (Vue and Websocket), Simultaneous Operation by Multiple Users,
-    Implemented WebSocket in C++ backend.
-
+  - About *3k* lines of *Rust* code.
 ]
 
 #sectionsep
 
 // ----- separate -----
 
-#section[Skills and Interests]
+#let item = item.with(show_detail: false)
 
-#let o(content) = text(fill: theme_color, weight: "bold", content)
+#section[Teaching Assistant Experience]
 
-#o[Language]: Mandarin (Native), English
+#let TA(class, teacher, date: "", extra: "", body) = {
+  item(class, body, short: [#teacher], date: date, extra: extra)
+}
 
-#o[Programming]: C++, Python, Rust, Go, Verilog, Coq, TypeScript, SQL, Shell.
-
-#o[Technical experience]:
-- Web Development: Flask, Vue, Nginx, MinIO.
-- System: ArchLinux, Ubuntu, Nix, Docker.
-- Database: MySQL, PostgreSQL, Redis.
-- Other: Latex, Typst, Wayland, Vivado.
-
-#o[Interests]: Badminton, Ping-Pong, Volleyball.
+#grid(columns: (1fr, 1fr), column-gutter: 2em)[
+  #TA("Programming (C++)", weng, date: "Fall 2023")[
+    - Created some homework
+    - Set 1 of 3 final exam problems
+    - Gave lectures on using Git, CMake, Linux, and some Algorithms
+  ]
+  #TA("Data Structure", weng, date: "Spring 2024")[
+    - Gave lectures on some extra data structures
+    - Guided students to finish the labs
+  ]
+][
+  #TA("Data Structure", liang, date: "Summer 2024")[
+    - Delivered some detailed aids and lessons
+  ]
+  #TA("Programming Practice", yu, date: "Summer 2024")[
+    - Created some CTF problems with the knowledge they learned (about Programming, Architecture, Cryptography)
+    - Improve and optimize the major project: Simulator of RISCV32 CPU
+    - Guided the lab of Network Proxy
+  ]
+]
