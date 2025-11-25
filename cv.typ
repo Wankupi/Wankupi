@@ -14,9 +14,11 @@
 #let weng = "Huiyu Weng"
 #let liang = "Alei Liang"
 #let yu = "Yong Yu"
-#let chen = "Guoxing Chen"
+#let guoxing = link("https://donnod.github.io/", underline(emph[Prof. Guoxing Chen]))
+#let mengjia = link("https://people.csail.mit.edu/mengjia/", underline(emph[Prof. Mengjia Yan]))
 
 #let theme_color = rgb("#005dc8")
+#let theme_color = rgb("#000")
 #let hl_color = theme_color
 
 #show strong: set text(fill: hl_color)
@@ -25,32 +27,36 @@
   font-type: "Times New Roman",
   continue-header: "false",
   name: [Kunpeng Wang],
-  address: [#acm, #sjtu],
+  // address: [#acm, #sjtu],
+  address: {},
   lastupdated: "true",
-  pagecount: "true",
+  pagecount: "false",
   date: datetime.today().display(),
   contacts: (
     (text: "kunpengwang@sjtu.edu.cn", link: "mailto:kunpengwang@sjtu.edu.cn"),
-    (text: [#fa-icon("github")Wankupi], link: "https://www.github.com/Wankupi"),
-    (text: "(+86) 15226606796"),
-    (text: [Blog], link: "https://acm.sjtu.edu.cn/~kunpengwang"),
-    (text: [#fa-icon("orcid")0009-0007-3720-6319], link: "https://orcid.org/0009-0007-3720-6319"),
+    (text: [#fa-icon("github") Wankupi], link: "https://www.github.com/Wankupi"),
+    // (text: "(+86) 15226606796"),
+    (text: [Website], link: "https://people.csail.mit.edu/kunpeng"),
+    // (text: [#fa-icon("orcid")0009-0007-3720-6319], link: "https://orcid.org/0009-0007-3720-6319"),
   ),
 )
 
 #let item(title, detail, short: "", date: "", extra: "", description: "", show_detail: true) = {
-  oneline-two(entry1: {
-    text(weight: "bold", fill: theme_color, title)
-    if (short != "") {
-      [, ]
-      // text(style: "italic", short)
-      short
-    }
-    if (extra != "") {
-      [, ]
-      text(style: "italic", extra)
-    }
-  }, entry2: date)
+  oneline-two(
+    entry1: {
+      text(weight: "bold", fill: theme_color, title)
+      if (short != "") {
+        [, ]
+        // text(style: "italic", short)
+        short
+      }
+      if (extra != "") {
+        [, ]
+        text(style: "italic", extra)
+      }
+    },
+    entry2: date,
+  )
   if (description != "") {
     description
   }
@@ -63,15 +69,19 @@
 #let gitee(path) = link(
   "https://gitee.com/" + path,
 )[#box(image("gitee-logo.svg"), height: 1em, inset: (right: -0.4em, bottom: -0.1em, top: 0.05em)) #path]
+#let github(path) = {}
+#let gitee(path) = {}
+
+I'm enthusiastic about formal verification, architecture design, and system security.
+I have strong self-learning and hands-on practical skills, and aim to pursue impactful and practical works.
 
 #section[Education]
 
 #item(
   sjtu,
   date: "Sep.2022 ~ Present",
-  description: emph[B.Eng. of Computer Science and Technology],
+  description: emph[B.Eng. of Computer Science and Technology, Student in #underline(acm)],
 )[
-  - Member of #underline(acm), #underline(zhiyuan)
   - Academic credit score: 90.4/100.
   - Selected courses: Program Verification: 99, Programming Practice: 100, Compiler Design: 96, Operating System: 95,
     Algorithms: 98, Comprehensive Design for Computer System: 95.
@@ -79,24 +89,49 @@
 
 #section[Research]
 
-I'm enthusiastic about formal verification, architecture, and system security. I have strong self-learning and hands-on
-practical skills.
+
+#item(
+  "MATCHA Lab",
+  short: "MIT",
+  date: "May.2024 ~ Dec.2025",
+  show_detail: true,
+)[
+  Advised by #mengjia\
+  Research Topic: secure (out-of-order) processor design and verification.
+
+  #item(
+    [Contract Verification and Defense Design],
+    short: [ongoing],
+    extra: "",
+  )[
+    Authors: #text(fill: red, "TODO")
+    - Use model checking to verify the contract property on out-of-order processor.
+    - Architectural insight guided proving and verification oriented hardware design.
+    - Plan to submit to S&P 2026
+  ]
+]
 
 #item(
   "Network Security and Privacy Protection (NSEC) Lab",
   short: "SJTU",
-  date: "June.2024~June.2026(expected)",
+  date: "June.2024 ~ June.2026",
   show_detail: true,
 )[
-  Undergraduate Researcher, advised by #link("https://donnod.github.io/", underline(emph[Prof. #chen]))\
+  Advised by #guoxing\
   Research Topic: verifiable interrupt-based side-channel mitigation for trusted execution environment.
+
+  #item([Verifiable Contract for TEE], short: [ongoing], extra: "")[
+    - Contract between mutual distrust TEE and OS to mitigate interrupt-based side-channel attacks.
+    - Allow both TEE and OS to verify the contract and generate proof of execution.
+  ]
 ]
+
 
 #sectionsep
 
 // ----- separate -----
 
-#section[Selected Awards]
+#section[Awards]
 
 #let award(award: "", institution: "", date: "", extra: "", description: "") = {
   item(award, short: institution, date: date, extra: extra, description: description)[]
@@ -134,11 +169,11 @@ practical skills.
     inst: ICPC,
     inst2: [Hangzhou, Nanjing and Hangkang],
   )
-  #award(award: "Silver Medal", date: "Nov.2022", inst: CCPC, inst2: "Weihai")
+  #award(award: "Silver Medal", date: "2022", inst: CCPC, inst2: "Weihai")
 ][
-  #award(award: "Merit Student", date: "2023", inst: sjtu, extra: [*one* per class only])
-  #award(award: "Zhiyuan Honorary Scholarship", date: "2022,2023,2024", inst: zhiyuan, extra: [top *2%* in SJTU])
-  #award(award: "First Prize Scholarship", date: "2023", inst: zhiyuan, extra: [top *3* in class])
+  #award(award: "Merit Student", date: "2023", inst: sjtu, extra: [one per class only])
+  #award(award: "Zhiyuan Honorary Scholarship", date: "2022,2023,2024", inst: zhiyuan, extra: [top 10% in SJTU])
+  #award(award: "First Prize Scholarship", date: "2023", inst: zhiyuan, extra: [top 3 in class])
 ]
 
 #sectionsep
@@ -147,49 +182,45 @@ practical skills.
 
 #let item = item.with(show_detail: true)
 
-#section[Selected Projects]
+#section[Course Projects]
+
+
 
 #item(
   [Verified TypeInfer],
-  short: [Group Course Project of Program Verification],
   date: "Spring 2024",
   extra: gitee("Wankupi/typeinfer"),
 )[
-  - This project aims to verify a C program "type inference" by Coq.
-  - My work is to prove the correctness of the type inference algorithm, while my partner's is to prove the C program does
-    implement the algorithm.
-  - Above *2k* lines of *Coq* code.
+  - Use Coq to verify the correctness of a type inference algorithm implemented by C.
+  - *2k* lines of *Coq* code.
 ]
-#item( //
+#item(
   [Mx-Compiler],
-  short: [Course Project of Compiler],
   date: "Summer 2023",
   extra: github("Wankupi/MxCompiler"),
 )[
   - A compiler from Mx language (a variant of C++ language designed for course) to RISCV32IM assembly
-  - Features: Register Allocation(Graphing Coloring), Mem2Reg, Constant Propagation, etc.
-  - About *15.8k* lines *C++* code.
+  - Features: Graphing Coloring, Mem2Reg, Constant Propagation, etc.
+  - *15.8k* lines *C++* code.
 ]
 #item(
-  [RISCV32I CPU in Verilog RTL],
-  short: [Course Project of Architecture],
+  [RISCV32I CPU],
   date: "Fall 2023",
   extra: github("Wankupi/RiSCV32-Processor"),
 )[
   - Features: Tomasulo, Branch Prediction, Instruction Cache, etc.
   - Could run on a Xilinx FPGA board.
-  - About *3.3k* lines of *Verilog* code.
+  - *3.3k* lines of *Verilog* code.
 ]
 #item(
   [RISCV64 Macrokernel in Rust],
-  short: [Course Project of Operating System],
   date: "Spring 2024",
   extra: github("Wankupi/kernel"),
 )[
-  - Includes an SBI implementation to boot the kernel.
-  - Could run on VisionFive2 board.
   - Features: KASLR, Virtual Memory, Buddy Allocator, Unix-like Syscall, etc.
-  - About *3k* lines of *Rust* code.
+  - Tested on real hardware, VisionFive2.
+  - Also implemented SBI (boot loader for RISC-V).
+  - *3k* lines of *Rust* code.
 ]
 
 #sectionsep
