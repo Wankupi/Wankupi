@@ -1,6 +1,8 @@
 #import "@preview/modernpro-cv:1.0.1": *
 #import "@preview/fontawesome:0.5.0": *
 
+#set page(paper: "us-letter")
+
 #let link_bak = link
 #let link = (url, text) => text
 #let ICPC = link("https://icpc.global/", "International Collegiate Programming Contest (ICPC)")
@@ -17,8 +19,9 @@
 #let guoxing = link("https://donnod.github.io/", underline(emph[Prof. Guoxing Chen]))
 #let mengjia = link("https://people.csail.mit.edu/mengjia/", underline(emph[Prof. Mengjia Yan]))
 
-#let theme_color = rgb("#005dc8")
-#let theme_color = rgb("#000")
+// #let theme_color = rgb("#005dc8")
+// #let theme_color = rgb("#003572")
+#let theme_color = black
 #let hl_color = theme_color
 
 #show strong: set text(fill: hl_color)
@@ -34,10 +37,8 @@
   date: datetime.today().display(),
   contacts: (
     (text: "kunpengwang@sjtu.edu.cn", link: "mailto:kunpengwang@sjtu.edu.cn"),
-    (text: [#fa-icon("github") Wankupi], link: "https://www.github.com/Wankupi"),
-    // (text: "(+86) 15226606796"),
-    (text: [Website], link: "https://people.csail.mit.edu/kunpeng"),
-    // (text: [#fa-icon("orcid")0009-0007-3720-6319], link: "https://orcid.org/0009-0007-3720-6319"),
+    (text: [#fa-icon("github")\. Wankupi], link: "https://www.github.com/Wankupi"),
+    (text: [www.wankupi.top], link: "https://www.wankupi.top"),
   ),
 )
 
@@ -50,7 +51,7 @@
         // text(style: "italic", short)
         short
       }
-      if (extra != "") {
+      if (extra != "" and extra != none) {
         [, ]
         text(style: "italic", extra)
       }
@@ -65,21 +66,22 @@
   }
 }
 
-#let github(path) = link("https://github.com/" + path)[#fa-icon("github")#path]
+#let github(path) = link("https://github.com/" + path)[#fa-icon("github")]
 #let gitee(path) = link(
   "https://gitee.com/" + path,
-)[#box(image("gitee-logo.svg"), height: 1em, inset: (right: -0.4em, bottom: -0.1em, top: 0.05em)) #path]
-#let github(path) = {}
-#let gitee(path) = {}
+)[#box(image("gitee-logo.svg"), height: 1em, inset: (right: -0.4em, bottom: -0.1em, top: 0.05em))]
+// #let github(path) = {}
+// #let gitee(path) = {}
 
-I'm enthusiastic about formal verification, architecture design, and system security.
-I have strong self-learning and hands-on practical skills, and aim to pursue impactful and practical works.
+I aim to expand the frontiers of verifiable security, building secure systems and developing more scalable verification methods.
+My long-term career goal is to become an independent researcher in computer security and formal verification, making innovative and impactful contributions to the computer architecture and system.
+
 
 #section[Education]
 
 #item(
   sjtu,
-  date: "Sep.2022 ~ Present",
+  date: "Sep 2022 ~ Present",
   description: emph[B.Eng. of Computer Science and Technology, Student in #underline(acm)],
 )[
   - Academic credit score: 90.4/100.
@@ -91,39 +93,116 @@ I have strong self-learning and hands-on practical skills, and aim to pursue imp
 
 
 #item(
-  "MATCHA Lab",
+  link("https://github.com/MATCHA-MIT")[MATCHA Group],
   short: "MIT",
-  date: "May.2024 ~ Dec.2025",
+  date: "May 2024 ~ Dec 2025",
   show_detail: true,
 )[
   Advised by #mengjia\
   Research Topic: secure (out-of-order) processor design and verification.
 
   #item(
-    [Contract Verification and Defense Design],
-    short: [ongoing],
+    [Secure Hardware Verification],
+    short: [under submission],
     extra: "",
   )[
-    Authors: #text(fill: red, "TODO")
-    - Use model checking to verify the contract property on out-of-order processor.
-    - Architectural insight guided proving and verification oriented hardware design.
-    - Plan to submit to S&P 2026
+    - Use model checking to verify the security properties on out-of-order processors.
+    - Explore architectural insight guided proving and verification oriented secure hardware design.
+    - Submitted to IEEE S&P 2026.
   ]
 ]
 
 #item(
-  "Network Security and Privacy Protection (NSEC) Lab",
+  link("https://nsec.sjtu.edu.cn/")[Network Security and Privacy Protection (NSEC) Lab],
   short: "SJTU",
-  date: "June.2024 ~ June.2026",
+  date: "June 2024 ~ June 2026",
   show_detail: true,
 )[
   Advised by #guoxing\
   Research Topic: verifiable interrupt-based side-channel mitigation for trusted execution environment.
 
-  #item([Verifiable Contract for TEE], short: [ongoing], extra: "")[
-    - Contract between mutual distrust TEE and OS to mitigate interrupt-based side-channel attacks.
+  #item(
+    [Verifiable Contract for TEE],
+    short: [ongoing],
+    extra: "",
+  )[
+    - Establish contract between mutual distrust TEE and OS to mitigate interrupt-based side-channel attacks.
     - Allow both TEE and OS to verify the contract and generate proof of execution.
   ]
+]
+
+
+#sectionsep
+
+// ----- separate -----
+
+#let item = item.with(show_detail: true)
+
+#section[Course Projects]
+
+#item(
+  [Verified TypeInfer],
+  date: "Spring 2024",
+  extra: gitee("Wankupi/typeinfer"),
+)[
+  - Use Coq to verify the correctness of a type inference algorithm implemented by C.
+  - 2k lines of Coq code.
+]
+#item(
+  [Mx-Compiler],
+  date: "Summer 2023",
+  extra: github("Wankupi/MxCompiler"),
+)[
+  - A compiler from Mx language (a variant of C++ language designed for course) to RISCV32IM assembly
+  - Features: Graphing Coloring, Mem2Reg, Constant Propagation, etc.
+  - 15.8k lines C++ code.
+]
+#item(
+  [RISCV32I CPU],
+  date: "Fall 2023",
+  extra: github("Wankupi/RiSCV32-Processor"),
+)[
+  - Features: Tomasulo, Branch Prediction, Instruction Cache, etc.
+  - Tested on a Xilinx FPGA board.
+  - 3.3k lines of Verilog code.
+]
+#item(
+  [RISCV64 Macrokernel],
+  date: "Spring 2024",
+  extra: github("Wankupi/kernel"),
+)[
+  - Features: KASLR, Virtual Memory, Buddy Allocator, Unix-like Syscall, etc.
+  - Contain full stack codes from bootloader to user programs.
+  - Tested on real hardware, VisionFive2.
+  - 3k lines of Rust code.
+]
+
+#sectionsep
+
+// #let item = item.with(show_detail: false)
+
+#section[Teaching Assistant Experience]
+
+#let TA(class, teacher, date: "", extra: "", body) = {
+  item(class, body, short: [#teacher], date: date, extra: extra)
+}
+
+#TA("Programming Practice", yu, date: "Summer 2024")[
+  - Create some CTF problems with the knowledge they have learned (about Programming, Architecture, Cryptography).
+  - Improve and optimize the major project: Simulator of RISCV32 CPU.
+  - Guide the lab of Network Proxy.
+]
+#TA("Data Structure", liang, date: "Summer 2024")[
+  - Deliver some detailed aids and lessons.
+]
+#TA("Data Structure", weng, date: "Spring 2024")[
+  - Give lectures on some data structures beyond the textbook.
+  - Guide students to finish the labs.
+]
+#TA("Programming (C++)", weng, date: "Fall 2023")[
+  - Create some homework.
+  - Set 1 of 3 final exam problems.
+  - Give lectures on using Git, CMake, Linux, and some Algorithms.
 ]
 
 
@@ -159,99 +238,19 @@ I have strong self-learning and hands-on practical skills, and aim to pursue imp
   }
 }
 
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 2em,
-)[
-  #award(
-    award: [$2 times$ Golden Medal, $1times$ Bronze Modal],
-    date: "2022",
-    inst: ICPC,
-    inst2: [Hangzhou, Nanjing and Hangkang],
-  )
-  #award(award: "Silver Medal", date: "2022", inst: CCPC, inst2: "Weihai")
-][
-  #award(award: "Merit Student", date: "2023", inst: sjtu, extra: [one per class only])
-  #award(award: "Zhiyuan Honorary Scholarship", date: "2022,2023,2024", inst: zhiyuan, extra: [top 10% in SJTU])
-  #award(award: "First Prize Scholarship", date: "2023", inst: zhiyuan, extra: [top 3 in class])
-]
-
-#sectionsep
-
-// ----- separate -----
-
-#let item = item.with(show_detail: true)
-
-#section[Course Projects]
-
-
-
-#item(
-  [Verified TypeInfer],
-  date: "Spring 2024",
-  extra: gitee("Wankupi/typeinfer"),
-)[
-  - Use Coq to verify the correctness of a type inference algorithm implemented by C.
-  - *2k* lines of *Coq* code.
-]
-#item(
-  [Mx-Compiler],
-  date: "Summer 2023",
-  extra: github("Wankupi/MxCompiler"),
-)[
-  - A compiler from Mx language (a variant of C++ language designed for course) to RISCV32IM assembly
-  - Features: Graphing Coloring, Mem2Reg, Constant Propagation, etc.
-  - *15.8k* lines *C++* code.
-]
-#item(
-  [RISCV32I CPU],
-  date: "Fall 2023",
-  extra: github("Wankupi/RiSCV32-Processor"),
-)[
-  - Features: Tomasulo, Branch Prediction, Instruction Cache, etc.
-  - Could run on a Xilinx FPGA board.
-  - *3.3k* lines of *Verilog* code.
-]
-#item(
-  [RISCV64 Macrokernel in Rust],
-  date: "Spring 2024",
-  extra: github("Wankupi/kernel"),
-)[
-  - Features: KASLR, Virtual Memory, Buddy Allocator, Unix-like Syscall, etc.
-  - Tested on real hardware, VisionFive2.
-  - Also implemented SBI (boot loader for RISC-V).
-  - *3k* lines of *Rust* code.
-]
-
-#sectionsep
-
-// ----- separate -----
-
-#let item = item.with(show_detail: false)
-
-#section[Teaching Assistant Experience]
-
-#let TA(class, teacher, date: "", extra: "", body) = {
-  item(class, body, short: [#teacher], date: date, extra: extra)
-}
-
-#grid(columns: (1fr, 1fr), column-gutter: 2em)[
-  #TA("Programming (C++)", weng, date: "Fall 2023")[
-    - Created some homework
-    - Set 1 of 3 final exam problems
-    - Gave lectures on using Git, CMake, Linux, and some Algorithms
-  ]
-  #TA("Data Structure", weng, date: "Spring 2024")[
-    - Gave lectures on some extra data structures
-    - Guided students to finish the labs
-  ]
-][
-  #TA("Data Structure", liang, date: "Summer 2024")[
-    - Delivered some detailed aids and lessons
-  ]
-  #TA("Programming Practice", yu, date: "Summer 2024")[
-    - Created some CTF problems with the knowledge they learned (about Programming, Architecture, Cryptography)
-    - Improve and optimize the major project: Simulator of RISCV32 CPU
-    - Guided the lab of Network Proxy
-  ]
-]
+// #grid(
+//   columns: (1fr, 1fr),
+//   column-gutter: 2em,
+// )[
+#award(
+  award: [$2 times$ Golden Medal, $1times$ Bronze Modal],
+  date: "2022",
+  inst: ICPC,
+  inst2: [Hangzhou, Nanjing and Hangkang],
+)
+#award(award: "Silver Medal", date: "2022", inst: CCPC, inst2: "Weihai")
+// ][
+#award(award: "Merit Student", date: "2023", inst: sjtu, extra: [one per class only])
+#award(award: "Zhiyuan Honorary Scholarship", date: "2022,2023,2024", inst: zhiyuan, extra: [top 10% in SJTU])
+#award(award: "First Prize Scholarship", date: "2023", inst: zhiyuan, extra: [top 3 in class])
+// ]
