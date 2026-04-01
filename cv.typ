@@ -74,7 +74,7 @@
 // #let gitee(path) = {}
 
 I aim to expand the frontiers of verifiable security, building secure systems and developing more scalable verification methods.
-My long-term career goal is to become an independent researcher in computer security and formal verification, making innovative and impactful contributions to the computer architecture and system.
+My long-term career goal is to become an independent researcher in computer security and formal verification, making innovative and impactful contributions to these fields.
 
 
 #section[Education]
@@ -84,7 +84,7 @@ My long-term career goal is to become an independent researcher in computer secu
   date: "Sep 2022 ~ Present",
   description: emph[B.Eng. of Computer Science and Technology, Student in #underline(acm)],
 )[
-  - Academic credit score: 90.4/100.
+  - Academic credit score: 90.4/100, GPA 3.876/4.3, Rank: 12/29.
   - Selected courses: Program Verification: 99, Programming Practice: 100, Compiler Design: 96, Operating System: 95,
     Algorithms: 98, Comprehensive Design for Computer System: 95.
 ]
@@ -95,7 +95,7 @@ My long-term career goal is to become an independent researcher in computer secu
 #item(
   link("https://github.com/MATCHA-MIT")[MATCHA Group],
   short: "MIT",
-  date: "May 2024 ~ Dec 2025",
+  date: "May 2025 ~ Dec 2025",
   show_detail: true,
 )[
   Advised by #mengjia\
@@ -103,12 +103,12 @@ My long-term career goal is to become an independent researcher in computer secu
 
   #item(
     [Secure Hardware Verification],
-    short: [under submission],
+    short: [under submission as co-first author],
     extra: "",
   )[
-    - Use model checking to verify the security properties on out-of-order processors.
-    - Explore architectural insight guided proving and verification oriented secure hardware design.
-    - Submitted to IEEE S&P 2026.
+    - Improve verification scalability of security properties on out-of-order processors.
+    - Investigate architectural insight guided proving and verification oriented secure hardware design.
+    - Submitted to IEEE S&P 2026 as co-first author.
   ]
 ]
 
@@ -123,7 +123,7 @@ My long-term career goal is to become an independent researcher in computer secu
 
   #item(
     [Verifiable Contract for TEE],
-    short: [ongoing],
+    short: [ongoing as first author],
     extra: "",
   )[
     - Establish contract between mutual distrust TEE and OS to mitigate interrupt-based side-channel attacks.
@@ -188,21 +188,21 @@ My long-term career goal is to become an independent researcher in computer secu
 }
 
 #TA("Programming Practice", yu, date: "Summer 2024")[
-  - Create some CTF problems with the knowledge they have learned (about Programming, Architecture, Cryptography).
+  - Create CTF problems with the knowledge students have learned (about Programming, Architecture, Cryptography).
   - Improve and optimize the major project: Simulator of RISCV32 CPU.
   - Guide the lab of Network Proxy.
 ]
 #TA("Data Structure", liang, date: "Summer 2024")[
-  - Deliver some detailed aids and lessons.
+  - Deliver detailed aids and lessons.
 ]
 #TA("Data Structure", weng, date: "Spring 2024")[
-  - Give lectures on some data structures beyond the textbook.
+  - Give lectures on data structures beyond the textbook.
   - Guide students to finish the labs.
 ]
 #TA("Programming (C++)", weng, date: "Fall 2023")[
-  - Create some homework.
+  - Create homeworks.
   - Set 1 of 3 final exam problems.
-  - Give lectures on using Git, CMake, Linux, and some Algorithms.
+  - Give lectures on using Git, CMake, Linux, and Algorithms like divide and conquer.
 ]
 
 
@@ -243,12 +243,21 @@ My long-term career goal is to become an independent researcher in computer secu
 //   column-gutter: 2em,
 // )[
 #award(
-  award: [$2 times$ Golden Medal, $1times$ Bronze Modal],
+  award: [Golden Medal],
   date: "2022",
-  inst: ICPC,
-  inst2: [Hangzhou, Nanjing and Hangkang],
+  inst: [#ICPC, Hangzhou],
 )
-#award(award: "Silver Medal", date: "2022", inst: CCPC, inst2: "Weihai")
+#award(
+  award: [Golden Medal],
+  date: "2022",
+  inst: [#ICPC, Nanjing],
+)
+#award(
+  award: [Bronze Medal],
+  date: "2022",
+  inst: [#ICPC, Hongkong],
+)
+#award(award: "Silver Medal", date: "2022", inst: [#CCPC, Weihai])
 // ][
 #award(award: "Merit Student", date: "2023", inst: sjtu, extra: [one per class only])
 #award(award: "Zhiyuan Honorary Scholarship", date: "2022,2023,2024", inst: zhiyuan, extra: [top 10% in SJTU])
