@@ -13,6 +13,8 @@
 #let zhiyuan = link("https://en.zhiyuan.sjtu.edu.cn/", "Zhiyuan College")
 #let acm = link("https://acm.sjtu.edu.cn/", "ACM Class")
 
+#let mit = "Massachusetts Institute of Technology"
+
 #let weng = "Huiyu Weng"
 #let liang = "Alei Liang"
 #let yu = "Yong Yu"
@@ -36,7 +38,7 @@
   pagecount: "false",
   date: datetime.today().display(),
   contacts: (
-    (text: "kunpengwang@sjtu.edu.cn", link: "mailto:kunpengwang@sjtu.edu.cn"),
+    (text: "kunpengw@mit.edu", link: "mailto:kunpengw@mit.edu"),
     (text: [#fa-icon("github")\. Wankupi], link: "https://www.github.com/Wankupi"),
     (text: [www.wankupi.top], link: "https://www.wankupi.top"),
   ),
@@ -80,17 +82,32 @@ My long-term career goal is to become an independent researcher in computer secu
 #section[Education]
 
 #item(
+  mit,
+  date: "2026 Fall",
+  description: emph[Incoming Ph.D. of Electrical and Electronics Engineering],
+)[]
+
+#item(
   sjtu,
-  date: "Sep 2022 ~ Present",
+  date: [Sep 2022 ~ Jun 2026],
   description: emph[B.Eng. of Computer Science and Technology, Student in #underline(acm)],
+)[]
+
+
+#sectionsep
+
+#section[Publications]
+
+#item(
+  [Interplay of Efficient Model Checking and Secure Processor Design: A Case Study on Secure Speculation],
 )[
-  - Academic credit score: 90.4/100, GPA 3.876/4.3, Rank: 12/29.
-  - Selected courses: Program Verification: 99, Programming Practice: 100, Compiler Design: 96, Operating System: 95,
-    Algorithms: 98, Comprehensive Design for Computer System: 95.
+  _IEEE S&P 2026_ \
+  Tingzhen Dong\*, *Kunpeng Wang\**, Yuheng Yang, Yu-Wei Fan, Qinhan Tan, Thomas Bourgeat, Sharad Malik, Mengjia Yan
 ]
 
-#section[Research]
+#sectionsep
 
+#section[Research Experience]
 
 #item(
   link("https://github.com/MATCHA-MIT")[MATCHA Group],
@@ -101,15 +118,6 @@ My long-term career goal is to become an independent researcher in computer secu
   Advised by #mengjia\
   Research Topic: secure (out-of-order) processor design and verification.
 
-  #item(
-    [Secure Hardware Verification],
-    short: [under submission as co-first author],
-    extra: "",
-  )[
-    - Improve verification scalability of security properties on out-of-order processors.
-    - Investigate architectural insight guided proving and verification oriented secure hardware design.
-    - Submitted to IEEE S&P 2026 as co-first author.
-  ]
 ]
 
 #item(
@@ -120,95 +128,8 @@ My long-term career goal is to become an independent researcher in computer secu
 )[
   Advised by #guoxing\
   Research Topic: verifiable interrupt-based side-channel mitigation for trusted execution environment.
-
-  #item(
-    [Verifiable Contract for TEE],
-    short: [ongoing as first author],
-    extra: "",
-  )[
-    - Establish contract between mutual distrust TEE and OS to mitigate interrupt-based side-channel attacks.
-    - Allow both TEE and OS to verify the contract and generate proof of execution.
-  ]
 ]
 
-
-#sectionsep
-
-// ----- separate -----
-
-#let item = item.with(show_detail: true)
-
-#section[Course Projects]
-
-#item(
-  [Verified TypeInfer],
-  date: "Spring 2024",
-  extra: gitee("Wankupi/typeinfer"),
-)[
-  - Use Coq to verify the correctness of a type inference algorithm implemented by C.
-  - 2k lines of Coq code.
-]
-#item(
-  [Mx-Compiler],
-  date: "Summer 2023",
-  extra: github("Wankupi/MxCompiler"),
-)[
-  - A compiler from Mx language (a variant of C++ language designed for course) to RISCV32IM assembly
-  - Features: Graphing Coloring, Mem2Reg, Constant Propagation, etc.
-  - 15.8k lines C++ code.
-]
-#item(
-  [RISCV32I CPU],
-  date: "Fall 2023",
-  extra: github("Wankupi/RiSCV32-Processor"),
-)[
-  - Features: Tomasulo, Branch Prediction, Instruction Cache, etc.
-  - Tested on a Xilinx FPGA board.
-  - 3.3k lines of Verilog code.
-]
-#item(
-  [RISCV64 Macrokernel],
-  date: "Spring 2024",
-  extra: github("Wankupi/kernel"),
-)[
-  - Features: KASLR, Virtual Memory, Buddy Allocator, Unix-like Syscall, etc.
-  - Contain full stack codes from bootloader to user programs.
-  - Tested on real hardware, VisionFive2.
-  - 3k lines of Rust code.
-]
-
-#sectionsep
-
-// #let item = item.with(show_detail: false)
-
-#section[Teaching Assistant Experience]
-
-#let TA(class, teacher, date: "", extra: "", body) = {
-  item(class, body, short: [#teacher], date: date, extra: extra)
-}
-
-#TA("Programming Practice", yu, date: "Summer 2024")[
-  - Create CTF problems with the knowledge students have learned (about Programming, Architecture, Cryptography).
-  - Improve and optimize the major project: Simulator of RISCV32 CPU.
-  - Guide the lab of Network Proxy.
-]
-#TA("Data Structure", liang, date: "Summer 2024")[
-  - Deliver detailed aids and lessons.
-]
-#TA("Data Structure", weng, date: "Spring 2024")[
-  - Give lectures on data structures beyond the textbook.
-  - Guide students to finish the labs.
-]
-#TA("Programming (C++)", weng, date: "Fall 2023")[
-  - Create homeworks.
-  - Set 1 of 3 final exam problems.
-  - Give lectures on using Git, CMake, Linux, and Algorithms like divide and conquer.
-]
-
-
-#sectionsep
-
-// ----- separate -----
 
 #section[Awards]
 
@@ -263,3 +184,83 @@ My long-term career goal is to become an independent researcher in computer secu
 #award(award: "Zhiyuan Honorary Scholarship", date: "2022,2023,2024", inst: zhiyuan, extra: [top 10% in SJTU])
 #award(award: "First Prize Scholarship", date: "2023", inst: zhiyuan, extra: [top 3 in class])
 // ]
+
+
+#sectionsep
+
+// ----- separate -----
+
+#let item = item.with(show_detail: true)
+
+#section[Course Projects]
+
+#item(
+  [Verified TypeInfer],
+  date: "Spring 2024",
+  extra: gitee("Wankupi/typeinfer"),
+)[
+  - Use Coq to verify the correctness of a type inference algorithm implemented by C.
+  - 2k lines of Coq code.
+]
+#pagebreak()
+#item(
+  [Mx-Compiler],
+  date: "Summer 2023",
+  extra: github("Wankupi/MxCompiler"),
+)[
+  - A compiler from Mx language (a variant of C++ language designed for course) to RISCV32IM assembly
+  - Features: Graphing Coloring, Mem2Reg, Constant Propagation, etc.
+  - 15.8k lines C++ code.
+]
+#item(
+  [RISCV32I CPU],
+  date: "Fall 2023",
+  extra: github("Wankupi/RiSCV32-Processor"),
+)[
+  - Features: Tomasulo, Branch Prediction, Instruction Cache, etc.
+  - Tested on a Xilinx FPGA board.
+  - 3.3k lines of Verilog code.
+]
+#item(
+  [RISCV64 Macrokernel],
+  date: "Spring 2024",
+  extra: github("Wankupi/kernel"),
+)[
+  - Features: KASLR, Virtual Memory, Buddy Allocator, Unix-like Syscall, etc.
+  - Contain full stack codes from bootloader to user programs.
+  - Tested on real hardware, VisionFive2.
+  - 3k lines of Rust code.
+]
+
+// #sectionsep
+
+// #let item = item.with(show_detail: false)
+
+#section[Teaching Assistant Experience]
+
+#let TA(class, teacher, date: "", extra: "", body) = {
+  item(class, body, short: [#teacher], date: date, extra: extra)
+}
+
+#TA("Programming Practice", yu, date: "Summer 2024")[
+  - Create CTF problems with the knowledge students have learned (about Programming, Architecture, Cryptography).
+  - Improve and optimize the major project: Simulator of RISCV32 CPU.
+  - Guide the lab of Network Proxy.
+]
+#TA("Data Structure", liang, date: "Summer 2024")[
+  - Deliver detailed aids and lessons.
+]
+#TA("Data Structure", weng, date: "Spring 2024")[
+  - Give lectures on data structures beyond the textbook.
+  - Guide students to finish the labs.
+]
+#TA("Programming (C++)", weng, date: "Fall 2023")[
+  - Create homeworks.
+  - Set 1 of 3 final exam problems.
+  - Give lectures on using Git, CMake, Linux, and Algorithms like divide and conquer.
+]
+
+
+// #sectionsep
+// #pagebreak()
+// ----- separate -----
