@@ -41,10 +41,12 @@
     (text: "kunpengw@mit.edu", link: "mailto:kunpengw@mit.edu"),
     (text: [#fa-icon("github")\. Wankupi], link: "https://www.github.com/Wankupi"),
     (text: [www.wankupi.top], link: "https://www.wankupi.top"),
+    (text: [(+86) 15226606796], link: "tel:15226606796")
   ),
 )
 
 #let item(title, detail, short: "", date: "", extra: "", description: "", show_detail: true) = {
+  show : it => block(it, breakable: false)
   oneline-two(
     entry1: {
       text(weight: "bold", fill: theme_color, title)
@@ -75,8 +77,8 @@
 // #let github(path) = {}
 // #let gitee(path) = {}
 
-I aim to expand the frontiers of verifiable security, building secure systems and developing more scalable verification methods.
-My long-term career goal is to become an independent researcher in computer security and formal verification, making innovative and impactful contributions to these fields.
+// I aim to expand the frontiers of verifiable security, building secure systems and developing more scalable verification methods.
+// My long-term career goal is to become an independent researcher in computer security and formal verification, making innovative and impactful contributions to these fields.
 
 
 #section[Education]
@@ -164,6 +166,16 @@ My long-term career goal is to become an independent researcher in computer secu
 //   column-gutter: 2em,
 // )[
 #award(
+  award: [Outstanding Graduate of Shanghai],
+  date: "2026",
+  inst: [#sjtu],
+)
+#award(
+  award: [Huawei Scholarship],
+  date: "2025",
+  inst: [#sjtu],
+)
+#award(
   award: [Golden Medal],
   date: "2022",
   inst: [#ICPC, Hangzhou],
@@ -202,7 +214,6 @@ My long-term career goal is to become an independent researcher in computer secu
   - Use Coq to verify the correctness of a type inference algorithm implemented by C.
   - 2k lines of Coq code.
 ]
-#pagebreak()
 #item(
   [Mx-Compiler],
   date: "Summer 2023",
@@ -261,6 +272,20 @@ My long-term career goal is to become an independent researcher in computer secu
 ]
 
 
-// #sectionsep
-// #pagebreak()
-// ----- separate -----
+#sectionsep
+
+#section[Other Projects]
+
+#item(
+  [ACM OnlineJudge Maintainer],
+)[
+  - Maintain and update the ACM Online Judge system for SJTU ACM Class, which serves over 200 students.
+  - Implement new features, fix bugs, and ensure the stability of the system.
+]
+
+#item(
+  [InfoCollect],
+)[
+  - A information collection, LLM summary and presentation system.
+  - Implemented with FastAPI and Vue, deployed on a cloud server.
+]
